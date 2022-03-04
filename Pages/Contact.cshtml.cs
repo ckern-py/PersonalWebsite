@@ -25,7 +25,7 @@ namespace PersonalWebsite.Pages
             }
             else
             {
-                SubmitStatus = "Some information seems to be missing";
+                SubmitStatus = "Some information seems to be missing. Please make sure all fields are filled out.";
             }
         }
     }
