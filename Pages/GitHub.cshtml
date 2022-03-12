@@ -160,11 +160,14 @@
             </div>
             <div class="col-sm-8" style=" border: 1px solid;">
                 <div style=" min-height: 200px; word-wrap: normal " id="1">
-                    <b>Function RedditTopWeekly</b>.<br />Some brief info about this repo. description for Project 1. Like a really sweet description. You have no idea.
-                    Its going to be really good. I swear. Adding more words here.To see if the box will expand. or just break.
-                    Also need to see if it will over flow into the next line. But what if I keep going. Then what will happen to the text.
-                    Itll probably just break, lol. Now im going to add even more word to test if this is even working or not. Because i dont know web design.
-                    Explaining why it is so great.
+                    <b>Function RedditTopWeekly</b>.<br />This repo contains an Azure function I created that will submit a post to 
+                    Reddit every 12 hours. It will also comment on the post it just created. The function is set on a timer trigger 
+                    that runs twice a day. Once kicked off the function interacts with the Reddit APIs to get and set data. The 
+                    function starts off by going to <a href="https://www.reddit.com/r/random">https://www.reddit.com/r/random</a>
+                    and getting redirected to a random subreddit. Once on a random subreddit it sorts the posts and gets the top 
+                    post of the week. A copy of this post is then submitted to a subreddit I have created specifically for the bot. 
+                    Once the post is successfully submitted, a comment is then submitted on that post with some stats about the original. 
+                    Stats such as how popular it was, where it came from, when it was created, and a link to the original post. 
                     <br /><b>Link to the repo:</b><br /><a href="https://github.com/ckern-py/Function_RedditTopWeekly">https://github.com/ckern-py/Function_RedditTopWeekly</a>
                 </div>
             </div>
@@ -183,11 +186,13 @@
             </div>
             <div class="col-sm-8" style=" border: 1px solid;">
                 <div style=" min-height: 200px; word-wrap: normal " id="1">
-                    <b>API MonthlyData</b>.<br />Some brief info about this repo. description for Project 1. Like a really sweet description. You have no idea.
-                    Its going to be really good. I swear. Adding more words here.To see if the box will expand. or just break.
-                    Also need to see if it will over flow into the next line. But what if I keep going. Then what will happen to the text.
-                    Itll probably just break, lol. Now im going to add even more word to test if this is even working or not. Because i dont know web design.
-                    Explaining why it is so great.
+                    <b>API MonthlyData</b>.<br />This repo contains an Azure API I created that will take in a list of data objects and write it to 
+                    an Azure Database. The API has three controllers. CheckHealth, CheckHealthDB, and MonthlyDataUsage. The MonthlyDataUsage controller 
+                    is the one that accepts requests and writes them to the Database. I have my Raspberry Pi set up to retrieve data from my router, 
+                    aggregate the data, and then send a request to my API. The request coming in is a list of my internet usage statistics for that month. 
+                    Each day in the month is its own object with info contained about that day within. Each day object contains what day of the month it 
+                    was, what day of the week it was, how much internet data was received that day, and how much internet data was sent 
+                    out that day.
                     <br /><b>Link to the repo:</b><br /><a href="https://github.com/ckern-py/API_MonthlyData">https://github.com/ckern-py/API_MonthlyData</a>
                 </div>
             </div>
@@ -206,8 +211,10 @@
             </div>
             <div class="col-sm-8" style=" border: 1px solid;">
                 <div style=" min-height: 200px; word-wrap: normal " id="1">
-                    <b>Website PersonalWebsite</b>.<br />This is the website you are currently on. It is mostly built with C# and Razor
-                    pages. This is my first, and so far, only website. How neat is that?
+                    <b>Website PersonalWebsite</b>.<br />This is the repo for the website you are currently on. The website is build on NET Core 3.1 using
+                    C# and Razor pages. This is my first, and so far, only website. The website is hosted in Azure using Azure Kubernetes Service (AKS) and 
+                    Docker Containers. Website comes with relevant information about me, information about my coding projects, a privacy page reguarding what 
+                    information is collected, and a form you can fill out to send me an email and get in contact with me. 
                     <br /><b>Link to the repo:</b><br /><a href="https://github.com/ckern-py/PersonalWebsite">https://github.com/ckern-py/PersonalWebsite</a>
                 </div>
             </div>
