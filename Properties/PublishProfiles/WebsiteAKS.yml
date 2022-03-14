@@ -1,0 +1,46 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colinkpersonalwebsite
+  namespace: colinkpersonalwebsite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: colinkpersonalwebsite
+  template:
+    metadata:
+      labels:
+        app: colinkpersonalwebsite
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+        - name: colinkpersonalwebsite
+          image: azurecontainerregistry.azurecr.io/personalwebsite:personalwebsite
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+          ports:
+            - containerPort: 80
+          env:
+            - name: REDIS
+              value: "colinkpersonalwebsite"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: colinkpersonalwebsite
+  namespace: colinkpersonalwebsite
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: colinkpersonalwebsite

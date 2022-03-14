@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
+using PersonalWebsite.Data;
+using PersonalWebsite.Domain;
 using PersonalWebsite.Models;
 
 namespace PersonalWebsite.Pages
@@ -7,6 +10,12 @@ namespace PersonalWebsite.Pages
     public class ContactModel : PageModel
     {
         public string SubmitStatus { get; set; }
+        private readonly IConfiguration _config;
+
+        public ContactModel(IConfiguration config)
+        {
+            _config = config;
+        }
 
         public void OnGet()
         {
@@ -20,7 +29,8 @@ namespace PersonalWebsite.Pages
         {
             if (ContactEmail.IsValid())
             {
-                //send the email or something  
+                IEmail email = new Email(_config);
+                email.SendContactMeEmail(ContactEmail);
                 SubmitStatus = "Email has been sent";
             }
             else

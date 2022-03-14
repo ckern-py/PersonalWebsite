@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalWebsite.Data;
+using PersonalWebsite.Domain;
 using System.Threading.Tasks;
 
 namespace PersonalWebsite
