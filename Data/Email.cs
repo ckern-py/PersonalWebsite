@@ -3,7 +3,6 @@ using PersonalWebsite.Domain;
 using PersonalWebsite.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System;
 
 namespace PersonalWebsite.Data
 {
@@ -18,10 +17,10 @@ namespace PersonalWebsite.Data
 
         public void SendContactMeEmail(EmailContact emailContactInfo)
         {
-            string apiKey = _configuration["SendgridAPIKey"];
+            string apiKey = _configuration["SENDGRID_API_KEY"];
             SendGridClient client = new SendGridClient(apiKey);
 
-            string websiteEmail = _configuration["WebsiteEmailAddress"];
+            string websiteEmail = _configuration["WEBSITE_EMAIL_ADDRESS"];
             SendGridMessage emailMessage = new SendGridMessage()
             {
                 From = new EmailAddress(websiteEmail, "ColinK_PersonalWebsite"),
@@ -29,7 +28,7 @@ namespace PersonalWebsite.Data
                 PlainTextContent = $"New email from {emailContactInfo.PersonEmail}.\n\nSubject: {emailContactInfo.EmailSubject}.\n\nMessage: {emailContactInfo.EmailMessage}"
             };
 
-            string receivingEmail = _configuration["MyEmail"];
+            string receivingEmail = _configuration["MY_EMAIL"];
             emailMessage.AddTo(new EmailAddress(receivingEmail));
 
             client.SendEmailAsync(emailMessage);
