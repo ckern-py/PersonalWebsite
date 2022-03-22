@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using PersonalWebsite.Data;
+using PersonalWebsite.Domain;
 using System.Diagnostics;
 
 namespace PersonalWebsite.Pages
@@ -14,14 +17,19 @@ namespace PersonalWebsite.Pages
 
         private readonly ILogger<ErrorModel> _logger;
 
-        public ErrorModel(ILogger<ErrorModel> logger)
+        private readonly IConfiguration _config;
+
+        public ErrorModel(ILogger<ErrorModel> logger, IConfiguration config)
         {
             _logger = logger;
+            _config = config;
         }
 
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            IStatsAPI statsAPI = new StatsAPI(_config);
+            statsAPI.RecordPageVisit("Error");
         }
     }
 }
